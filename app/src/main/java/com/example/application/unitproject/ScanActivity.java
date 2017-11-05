@@ -55,7 +55,6 @@ public class ScanActivity extends AppCompatActivity {
                 } catch (SecurityException e){
                     e.printStackTrace();
                 }
-
             }
 
             @Override

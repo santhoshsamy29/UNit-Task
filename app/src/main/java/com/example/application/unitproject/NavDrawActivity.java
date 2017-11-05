@@ -13,8 +13,6 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -23,14 +21,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -55,7 +49,6 @@ public class NavDrawActivity extends AppCompatActivity
     String timeStamp,imgname;
     private static final int REQUEST_CAMERA = 1;
     private static final int REQUEST_GALLERY = 2;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,7 +155,6 @@ public class NavDrawActivity extends AppCompatActivity
         }
     }
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -227,12 +219,10 @@ public class NavDrawActivity extends AppCompatActivity
 
                     Uri imageUri = getContent(this,image_name);
                     profileImage.setImageURI(imageUri);
-                    //writecaption(imageUri);
                     break;
                 case REQUEST_GALLERY:
                     Uri imguri = data.getData();
                     profileImage.setImageURI(imguri);
-                    //writecaption(imguri);
                     break;
 
             }
@@ -257,7 +247,6 @@ public class NavDrawActivity extends AppCompatActivity
         {
             samplesize = Math.round((float)width/(float)rWidth);
         }
-
         options.inSampleSize = samplesize;
 
         options.inJustDecodeBounds = false;
@@ -281,7 +270,6 @@ public class NavDrawActivity extends AppCompatActivity
     }
 
     private Uri getContent(Context context, File image) {
-
         String imagePath = image.getAbsolutePath();
         Cursor cursor = context.getContentResolver().query(
                 MediaStore.Files.getContentUri("external"),

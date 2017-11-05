@@ -52,22 +52,17 @@ public class LoginActivity extends AppCompatActivity {
                 signIn();
             }
         });
-
     }
 
     public void signIn(){
         if (!validateName()) {
             return;
         }
-
         if (!validateNumber()) {
             return;
         }
-
         final String name = inputName.getText().toString();
         final String number = inputNumber.getText().toString();
-
-
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = LayoutInflater.from(this).inflate(R.layout.login_dialog,null);
@@ -78,13 +73,12 @@ public class LoginActivity extends AppCompatActivity {
         final TextView responseTv = view.findViewById(R.id.response);
         final AlertDialog log_dialog = builder.create();
         log_dialog.show();
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "www.ikai.co.in/api/login.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         try {
-
                             JSONObject obj = new JSONObject(response);
 
                             if (!obj.getBoolean("error")) {
@@ -122,9 +116,7 @@ public class LoginActivity extends AppCompatActivity {
         };
 
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
-
     }
-
 
     private boolean validateName() {
         if (inputName.getText().toString().trim().isEmpty()) {
@@ -155,16 +147,5 @@ public class LoginActivity extends AppCompatActivity {
         if (view.requestFocus()) {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
-    }
-
-    public void loginDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        View view = LayoutInflater.from(this).inflate(R.layout.login_dialog,null);
-        builder.setView(view);
-        builder.setCancelable(true);
-
-        AlertDialog log_dialog = builder.create();
-        log_dialog.show();
-
     }
 }

@@ -3,19 +3,16 @@ package com.example.application.unitproject;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.MailTo;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ButtonBarLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
@@ -61,10 +58,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void scanIntent() {
-
         startActivity(new Intent(HomeActivity.this,ScanActivity.class));
-
-
     }
 
     private void loginIntent(){
@@ -83,10 +77,8 @@ public class HomeActivity extends AppCompatActivity {
                 temp_perm.add(permission[i]);
             }
         }
-
         String[] perm = new String[temp_perm.size()];
         perm = temp_perm.toArray(perm);
-
         if(perm.length > 0){
             ActivityCompat.requestPermissions(this,perm,perm_id);
             return false;
